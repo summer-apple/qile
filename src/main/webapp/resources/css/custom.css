@@ -1,0 +1,32 @@
+/**
+ *
+ * Apply your custom CSS here
+ *
+*/
+label#verify-code-error {
+  left: 140px;
+}
+
+
+@font-face
+{
+font-family: myFirstFont;
+src: url('fonts/msyh/msyh.ttf'),
+	url('fonts/msyh/msyh.ttc'),
+     url('fonts/msyh/msyh.eot'); /* IE9+ */
+}
+
+*:not(.fa,i){
+font-family:myFirstFont !important;
+}
+.error {
+    color: #F00 !important;
+}
+.del-id{
+    display: none;
+}
+.wangEditor-textarea{
+	font-size: 16px;
+    color: #000;
+    font-family: myFirstFont !important;
+}
