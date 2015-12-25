@@ -1,5 +1,5 @@
 package com.qile.entity;
-// Generated 2015-12-24 20:56:24 by Hibernate Tools 4.3.1.Final
+// Generated 2015-12-25 18:49:14 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -116,7 +116,7 @@ public class Association implements java.io.Serializable {
 		this.phone = phone;
 	}
 
-	@Column(name = "email", length = 45)
+	@Column(name = "email", length = 100)
 	public String getEmail() {
 		return this.email;
 	}

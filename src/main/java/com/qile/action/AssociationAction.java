@@ -33,6 +33,8 @@ public class AssociationAction {
 		association.setPassword(password);
 		association.setPhone(phone);
 		
+		request.getSession().setAttribute("association", association);
+		
 		return as.register(association);
 	}
 	
@@ -44,15 +46,12 @@ public class AssociationAction {
 		Association association = as.login(username, password);
 		
 		if (association!=null) {
-			boolean flag = false;
-			mv.addObject(flag);
-			
 			mv.addObject(association);
 			request.getSession().setAttribute("association", association);
-			mv.setViewName("mobile/home");
+			mv.setViewName("mobile/association-center");
 		}else {
-			boolean flag = true;
-			mv.addObject(flag);
+			String tip = "用户名或密码错误";
+			mv.addObject("tip",tip);
 			mv.setViewName("mobile/login");
 		}
 		return mv;
@@ -66,7 +65,11 @@ public class AssociationAction {
 		return mv;
 	}
 	
-	
+	@RequestMapping("/update")
+	@ResponseBody
+	public boolean update(HttpServletRequest request,Association association){
+		return as.update(association);
+	}
 	
 	
 }

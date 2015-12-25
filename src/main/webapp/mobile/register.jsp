@@ -1,10 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>DRARTISAN</title>
+		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
+<title>其乐校园</title>
 <link rel="stylesheet" type="text/css" href="../resources/js/bootstrap/css/bootstrap.min.css">
   <script type="text/javascript" src="../resources/js/jquery-1.11.1.min.js"></script>
   <script type="text/javascript" src="../resources/js/bootstrap/js/bootstrap.min.js"></script>
@@ -22,7 +29,7 @@
   }
   .input-warp{
     float: left;
-    width: 65%;
+    width: 50%;
   }
   label.error {
     font-size: 13px;
@@ -46,12 +53,23 @@
   .reg-btn{
     width: 100%;
   }
+	header{
+		height: 60px;
+		width: 100%;
+		text-align: center;
+		margin-bottom: 10px;
+	}
+	.logo{
+		height: 100%;
+	}
 </style>
 
 </head>
 <body>
-
-<div class="container-fluid">
+	<header>
+		<image class="logo" src="../resources/images/qile-logo.png">
+	</header>
+<div class="container">
    <div class="row">
      <div class="col-sm-12">
        <form id="register-form" method="post" role="form" action="">
@@ -70,12 +88,15 @@
        </div>
        <div class="form-group">
           <label>选择身份：</label>
+
+					<label class="radio-inline">
+            <input type="radio" name="regtype" id="association" value="association" checked> 社团
+          </label>
+
           <label class="radio-inline">
             <input type="radio" name="regtype" id="company" value="company"> 企业
           </label>
-          <label class="radio-inline">
-            <input type="radio" name="regtype" id="association" value="association" checked> 社团
-          </label>
+
        </div>
 
        <div class="form-group">
@@ -101,7 +122,7 @@
        </div>
 
        <div class="form-group login-link">
-         <a href="login.jsp">已有账号，去登录</a>
+         <a href="<%=basePath%>mobile/login.jsp">已有账号，去登录</a>
        </div>
       </form>
      </div>
@@ -272,7 +293,7 @@ function checkSecurity(){
 
 
 //开始倒计时
-var countdown = 5;
+var countdown = 60;
 function settime() {
   var obj = $(".get-security-code-btn");
   if (countdown == 0) {
