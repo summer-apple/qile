@@ -20,24 +20,13 @@
   body{
     margin: 20px;
   }
-  .input-warp{
-    float: left;
-    width: 65%;
-  }
-  label.error {
-    font-size: 13px;
-    color: #F00;
-}
   #phone,#security{
-    width: 100%;
-    float: none;
+    width: 65%;
+    float: left;
   }
   .get-security-code-btn{
     width: 25%;
     float: right;
-    min-width: 120px;
-  }
-  .reg-btn{
     min-width: 120px;
   }
   .login-link,.protocol-link{
@@ -54,7 +43,7 @@
 <div class="container-fluid">
    <div class="row">
      <div class="col-sm-12">
-       <form id="register-form" method="post" role="form" action="">
+       <form id="update-form" method="post" role="form" action="">
          <input type="hidden" id="id" name="id" value="0">
          <input type="hidden" id="flag" name="flag" value="0">
        <div class="form-group">
@@ -79,17 +68,13 @@
        </div>
 
        <div class="form-group">
-         <div class="input-warp">
-           <input type="phone" class="form-control" id="phone" name="phone" placeholder="手机号">
-         </div>
+         <input type="phone" class="form-control" id="phone" name="phone" placeholder="手机号">
          <input type="button" class="btn btn-info get-security-code-btn" value="免费获取验证码">
        </div>
        <br><br><br>
 
        <div class="form-group">
-         <div class="input-warp">
          <input type="text" class="form-control" id="security" name="security" placeholder="验证码">
-         </div>
        </div><br><br>
 
        <div class="form-group protocol-link">
@@ -189,14 +174,11 @@
 
 								var $regtype = $('input:radio[name="regtype"]:checked').val();
 
-                var $url;
-                var $redirect;
+
 								if ($regtype == 'company') {
 									$url ='../company/register';
-                  $redirect = 'company-center.jsp';
 								}else{
 									$url ='../association/register';
-                  $redirect = 'association-center.jsp';
 								}
 
 
@@ -207,9 +189,7 @@
                   dataType:'json',
                   success:function(data){
                     if (data) {
-                      //alert('验证码正确');
-                      $("#security-error").remove();
-
+                      alert('验证码正确');
                       $("#register-form").ajaxSubmit({
       					                url:$url,
       					                type:'post',
@@ -217,19 +197,20 @@
       					                success:function(data){
       					                    if (data!=0) {
       					                    	//注册成功
-                                      //alert('register success');
-                                      window.location.href=$redirect;
+                                      alert('register success');
       					                    }else{
       					                    	//注册失败
-                                      alert('注册失败,请稍后再试');
+                                      alert('register failure');
       					                    };
       					                }
       					            });
                     }else{
-                      $("#security").after('<label id="security-error" class="error" for="security">验证码错误</label>');
+                      alert('验证码错误');
                     }
                   }
                 });
+
+
 							}
 						});
 

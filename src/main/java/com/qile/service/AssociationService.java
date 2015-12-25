@@ -22,6 +22,10 @@ public class AssociationService {
 	public boolean register(Association association) {	
 		try {
 			dao.update(association);
+			
+			
+			//在此删除无效用户
+			
 			return true;
 		} catch (Exception e) {
 			return false;

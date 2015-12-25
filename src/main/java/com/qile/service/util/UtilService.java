@@ -226,6 +226,7 @@ public class UtilService {
 	        int number = random.nextInt(base.length());     
 	        sb.append(base.charAt(number));     
 	    }     
+	    System.out.println(sb.toString());
 	    return sb.toString();     
 	 }
 
