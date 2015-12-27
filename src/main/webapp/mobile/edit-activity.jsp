@@ -263,7 +263,20 @@ function getUrlParam(name) {
 													success:function(data){
 															if (data) {
 																//注册成功
-																alert('保存成功');
+																$.ajax({
+																	url:"../activity/activity-count?id=${association.id}",
+																	type:'post',
+																	dataType:'json',
+																	success:function(data){
+																		if (data == 1) {
+																				alert('保存成功,恭喜您获得千元物料包，请前往优惠券查看。');
+																		}else{
+																				alert('保存成功');
+																		}
+																	}
+																});
+
+
 															}else{
 																//注册失败
 																alert('保存失败,请稍后再试');

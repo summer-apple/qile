@@ -36,7 +36,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     color: #F00;
 }
   .add-btn{
-    width: 100%;
+    min-width: 100%;
   }
   .register-link{
     text-align: center;
@@ -60,6 +60,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .clear{
 	clear: both;
 }
+.coupon-list{
+	display: none;
+}
+.coupon-warp {
+    background-color: rgba(202, 224, 226, 0.41);
+    padding: 10px;
+}
+.coupon-title {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 5px;
+}
+.coupon-content {
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
 </style>
 
 </head>
@@ -69,18 +85,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<div class="clear"></div>
 		<div class="logo-warp">
-			<h4>活动列表</h4>
+			<h4>优惠券列表</h4>
 		</div>
 	<div class="clear"></div>
 <div class="container">
    <div class="row">
-     <div class="col-md-12">
-			 <table class="table table-hover">
-
-			 </table>
-
-			 <div class="form-group">
-				 <a href="<%=basePath%>mobile/edit-activity.jsp?id=0" class="add-btn btn btn-info">新增活动</a>
+     <div class="col-md-12 coupon-list">
+			 <!--ajax add-->
+			 <div class="coupon-warp">
+				 <div class="col-md-12 coupon-title"><h5>其乐校园注册有礼千元物料包</h5></div>
+				 <div class="col-md-12 coupon-time">有效期：2016年上半学年各校开学及假日</div>
+				 <div class="col-md-12 coupon-price">优惠券价值：￥1000</div>
+				 <div class="col-md-12 coupon-content">1000元物料包内印刷类上限是200元，舞美类上限800元。免费物料使用时间段为2016年上半学年各校开学及放假日内。1000元免费物料包内价格均为市场价，用完后才可使用超低折扣价格的物料。</div>
 			 </div>
      </div>
   </div>
@@ -120,13 +136,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	$().ready(function(){
 
 		$.ajax({
-			url:"../activity/get-list",
+			url:"../activity/ifAssociationHasActivity?id=${association.id}",
 			type:'post',
 			dataType:'json',
 			success:function(data){
-				 $.each(data, function(i, item) {
-					 $("table").append('<tr><td><a href="<%=basePath%>mobile/edit-activity.jsp?id='+item.id+'">'+item.title+'</a></td></tr>');
-				 });
+				if (data) {
+					$(".coupon-list").show();
+				}
 			}
 		});
 

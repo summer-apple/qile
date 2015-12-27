@@ -72,4 +72,22 @@ public class ActivityService {
 		return list;
 	}
 	
+	/**
+	 * 社团是否有活动
+	 * @param id
+	 * @return
+	 */
+	public boolean ifAssociationHasActivity(int id) {
+		return dao.exist(Activity.class, "association", id);
+	}
+	
+	/**
+	 * 社团活动数量
+	 * @param id
+	 * @return
+	 */
+	public int activityCount(int id) {
+		return dao.getList(Activity.class, "association",id).size();
+	}
+	
 }

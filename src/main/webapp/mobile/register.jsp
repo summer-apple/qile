@@ -324,7 +324,7 @@ function settime() {
 //校验手机号是否合法
 function isPhoneNum(){
   var phone = $("#phone").val();
-  var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+  var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1})|(17[0-9]{1}))+\d{8})$/;
   if(!myreg.test(phone)){
 		if($("#phone-error").length>0){
 			$("#phone-error").show();

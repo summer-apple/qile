@@ -48,4 +48,16 @@ public class ActivityAction {
 		return as.update(activity); 
 	}
 	
+	
+	@RequestMapping("/ifAssociationHasActivity")
+	@ResponseBody
+	public boolean ifAssociationHasActivity(HttpServletRequest request,int id){
+		return as.ifAssociationHasActivity(id);
+	}
+	
+	@RequestMapping("/activity-count")
+	@ResponseBody
+	public int activityCount(HttpServletRequest request,int id){
+		return as.activityCount(id);
+	}
 }
