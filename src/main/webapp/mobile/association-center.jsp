@@ -13,10 +13,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 <title>其乐校园</title>
 <link rel="stylesheet" type="text/css" href="../resources/js/bootstrap/css/bootstrap.min.css">
-  <script type="text/javascript" src="../resources/js/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="../resources/js/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../resources/js/jquery.form.js"></script>
-  <script type="text/javascript" src="../resources/js/jquery-validate/jquery.validate.js"></script>
+	<link rel="stylesheet" href="../resources/js/responsive-nav/responsive-nav.css">
+	<link rel="stylesheet" href="../resources/js/responsive-nav/responsive-nav-styles.css">
 <style type="text/css">
   *{
     margin: 0;
@@ -38,22 +36,34 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   .reg-btn{
     width: 100%;
   }
-	header{
+	.logo-warp{
 		height: 60px;
 		width: 100%;
 		text-align: center;
 		margin-bottom: 10px;
+		clear: both;
 	}
 	.logo{
 		height: 100%;
 	}
+	.btn-warp{
+		text-align: center;
+	}
+.clear{
+	clear: both;
+}
 </style>
 
 </head>
 <body>
-	<header>
-		<image class="logo" src="../resources/images/qile-logo.png">
-	</header>
+
+		<%@include file="nav.jsp"%>
+
+	<div class="clear"></div>
+		<div class="logo-warp">
+			<image class="logo" src="../resources/images/qile-logo.png">
+		</div>
+	<div class="clear"></div>
 <div class="container-fluid">
    <div class="row">
      <div class="col-sm-12">
@@ -143,24 +153,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				 <label>采购物料是否还有其他考虑因素（如果没有请填无）</label>
          <input type="text" class="form-control" id="purchaseAddition" name="purchaseAddition" placeholder="物料采购其他因素(50字内)" value="${association.purchaseAddition}">
        </div>
-       <%-- <div class="form-group">
-         <input type="password" class="form-control" id="password" name="password" placeholder="密 码">
-       </div>
-
-       <div class="form-group">
-         <input type="password" class="form-control" id="confirm" name="confirm" placeholder="确认密码">
-       </div> --%>
-
-       <%-- <div class="form-group">
-         <input type="phone" class="form-control" id="phone" name="phone" placeholder="手机号">
-         <input type="button" class="btn btn-info get-security-code-btn" value="免费获取验证码">
-       </div>
-       <br><br><br>
-
-       <div class="form-group">
-         <input type="text" class="form-control" id="security" name="security" placeholder="验证码">
-       </div><br><br> --%>
-
 
 
        <div class="form-group">
@@ -181,6 +173,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
+<script type="text/javascript" src="../resources/js/jquery-1.11.1.min.js"></script>
+<script src="../resources/js/responsive-nav/responsive-nav.min.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.form.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-validate/jquery.validate.js"></script>
+<script>
+	var navigation = responsiveNav(".nav-collapse", {
+		animate: true,                    // Boolean: Use CSS3 transitions, true or false
+		transition: 284,                  // Integer: Speed of the transition, in milliseconds
+		label: "Menu",                    // String: Label for the navigation toggle
+		insert: "after",                  // String: Insert the toggle before or after the navigation
+		customToggle: "",                 // Selector: Specify the ID of a custom toggle
+		closeOnNavClick: false,           // Boolean: Close the navigation when one of the links are clicked
+		openPos: "relative",              // String: Position of the opened nav, relative or static
+		navClass: "nav-collapse",         // String: Default CSS class. If changed, you need to edit the CSS too!
+		navActiveClass: "js-nav-active",  // String: Class that is added to <html> element when nav is active
+		jsClass: "js",                    // String: 'JS enabled' class which is added to <html> element
+		init: function(){},               // Function: Init callback
+		open: function(){},               // Function: Open callback
+		close: function(){}               // Function: Close callback
+	});
+</script>
 <script type="text/javascript">
 	$().ready(function(){
 

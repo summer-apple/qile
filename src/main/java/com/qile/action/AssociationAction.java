@@ -68,6 +68,7 @@ public class AssociationAction {
 	@RequestMapping("/update")
 	@ResponseBody
 	public boolean update(HttpServletRequest request,Association association){
+		request.getSession().setAttribute("association", association);
 		return as.update(association);
 	}
 	

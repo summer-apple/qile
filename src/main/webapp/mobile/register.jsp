@@ -13,10 +13,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="viewport" content="width=device-width initial-scale=1.0 maximum-scale=1.0 user-scalable=yes" />
 <title>其乐校园</title>
 <link rel="stylesheet" type="text/css" href="../resources/js/bootstrap/css/bootstrap.min.css">
-  <script type="text/javascript" src="../resources/js/jquery-1.11.1.min.js"></script>
-  <script type="text/javascript" src="../resources/js/bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="../resources/js/jquery.form.js"></script>
-  <script type="text/javascript" src="../resources/js/jquery-validate/jquery.validate.js"></script>
+
 <style type="text/css">
   *{
     margin: 0;
@@ -53,22 +50,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   .reg-btn{
     width: 100%;
   }
-	header{
+	.logo-warp{
 		height: 60px;
 		width: 100%;
 		text-align: center;
 		margin-bottom: 10px;
+		clear: both;
 	}
 	.logo{
 		height: 100%;
 	}
+	.btn-warp{
+		text-align: center;
+	}
+.clear{
+	clear: both;
+}
 </style>
 
 </head>
 <body>
-	<header>
+	<div class="logo-warp">
 		<image class="logo" src="../resources/images/qile-logo.png">
-	</header>
+	</div>
 <div class="container">
    <div class="row">
      <div class="col-sm-12">
@@ -114,7 +118,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        </div><br><br>
 
        <div class="form-group protocol-link">
-         <a href="javascript:void(0);">《易联校园用户注册协议》</a>
+         <a href="javascript:void(0);">《其乐校园用户注册协议》</a>
        </div>
 
        <div class="form-group">
@@ -136,7 +140,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-
+<script type="text/javascript" src="../resources/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../resources/js/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="../resources/js/jquery.form.js"></script>
+<script type="text/javascript" src="../resources/js/jquery-validate/jquery.validate.js"></script>
 <script type="text/javascript">
 	$().ready(function(){
 
@@ -257,20 +264,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             $(".get-security-code-btn").click(function(){
 
-              $.ajax({
-                url:"../util/get-security",
-                data: {'phone':$('#phone').val(),'type':$('input:radio[name="regtype"]:checked').val()},
-                type:'post',
-                dataType:'json',
-                success:function(data){
-                  if (data != 0) {
-                    $("#id").val(data);
-                  }else{
-                    alert('获取验证码错误，请稍后再试');
-                  }
-                  settime();
-                }
-              });
+							if(isPhoneNum()){
+								$.ajax({
+	                url:"../util/get-security",
+	                data: {'phone':$('#phone').val(),'type':$('input:radio[name="regtype"]:checked').val()},
+	                type:'post',
+	                dataType:'json',
+	                success:function(data){
+	                  if (data != 0) {
+	                    $("#id").val(data);
+	                  }else{
+	                    alert('获取验证码错误，请稍后再试');
+	                  }
+	                  settime();
+	                }
+	              });
+							}
+
+
             });
 
 
@@ -312,12 +323,17 @@ function settime() {
 
 //校验手机号是否合法
 function isPhoneNum(){
-  var phonenum = $("#phonenum").val();
+  var phone = $("#phone").val();
   var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
-  if(!myreg.test(phonenum)){
-    alert('请输入有效的手机号码！');
+  if(!myreg.test(phone)){
+		if($("#phone-error").length>0){
+			$("#phone-error").show();
+		}else{
+			$("#phone").after('<label id="phone-error" class="error" for="security">手机格式有误</label>');
+		}
     return false;
   }else{
+		$("#phone-error").hide();
     return true;
   }
 }

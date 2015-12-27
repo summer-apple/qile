@@ -35,8 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     font-size: 13px;
     color: #F00;
 }
-  .login-btn{
-    min-width: 120px;
+  .add-btn{
+    width: 100%;
   }
   .register-link{
     text-align: center;
@@ -64,60 +64,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 </head>
 <body>
-	<div class="logo-warp">
-		<image class="logo" src="../resources/images/qile-logo.png">
-	</div>
+
+		<%@include file="nav.jsp"%>
+
+	<div class="clear"></div>
+		<div class="logo-warp">
+			<h4>活动列表</h4>
+		</div>
+	<div class="clear"></div>
 <div class="container">
    <div class="row">
      <div class="col-md-12">
-       <form class="form form-horizontal" id="login-form" method="post" role="form" action="../association/login">
+			 <table class="table table-hover">
 
-		 <c:if test="${!empty tip}"><label class="tip">${tip}</label></c:if>
+			 </table>
 
-         <input type="hidden" id="id" name="id" value="0">
-         <input type="hidden" id="flag" name="flag" value="0">
-       <div class="form-group">
-         <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
-       </div>
-
-       <div class="form-group">
-         <input type="password" class="form-control" id="password" name="password" placeholder="密 码">
-       </div>
-
-       <%-- <div class="form-group">
-          <label>选择身份：</label>
-					<label class="radio-inline">
-            <input type="radio" name="regtype" id="association" value="association" checked> 社团
-          </label>
-          <label class="radio-inline">
-            <input type="radio" name="regtype" id="company" value="company"> 企业
-          </label>
-       </div> --%>
 			 <div class="form-group">
-          <label>选择身份：</label>
-
-					<label class="radio-inline">
-            <input type="radio" name="regtype" id="association" value="association" checked> 社团
-          </label>
-
-          <label class="radio-inline">
-            <input type="radio" name="regtype" id="company" value="company"> 企业
-          </label>
-
-       </div>
-
-
-
-
-
-       <div class="form-group">
-         <button type="submit" class="login-btn btn btn-info">登 录</button>
-       </div>
-
-       <div class="form-group register-link">
-         <a href="<%=basePath%>mobile/register.jsp">没有账号，去注册</a>
-       </div>
-      </form>
+				 <a href="<%=basePath%>mobile/edit-activity.jsp?id=0" class="add-btn btn btn-info">新曾活动</a>
+			 </div>
      </div>
   </div>
 
@@ -155,44 +119,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	$().ready(function(){
 
-    //添加
-	$("#login-form").validate({
-							rules: {
-
-								username: {
-									required: true
-								},
-
-								password: {
-									required: true
-								}
-							},
-
-							messages: {
-								username: {
-									required: '必填项目'
-								},
-
-								password: {
-									required: '必填项目'
-								}
-							}
-
-						});
-
-						$("#company").click(function(){
-							$("#login-form").attr("action","../company/login");
-						});
-
-						$("#association").click(function(){
-							$("#login-form").attr("action","../association/login");
-						});
-
-						$("#username").focus(function(){
-							$(".tip").remove();
-						});
-
-
+		$.ajax({
+			url:"../activity/get-list",
+			type:'post',
+			dataType:'json',
+			success:function(data){
+				 $.each(data, function(i, item) {
+					 $("table").append('<tr><td><a href="<%=basePath%>mobile/edit-activity.jsp?id='+item.id+'">'+item.title+'</a></td></tr>');
+				 });
+			}
+		});
 
 
 	});
