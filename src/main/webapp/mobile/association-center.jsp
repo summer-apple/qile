@@ -32,6 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   }
   .login-link,.protocol-link{
     text-align: center;
+		color: #999;
   }
   .reg-btn{
     width: 100%;
@@ -309,8 +310,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 													success:function(data){
 															if (data!=0) {
 																//注册成功
-																alert('保存成功');
-																//window.location.href=$redirect;
+																alert('保存成功，继续添加社团日常活动即可获得千元物料包');
+																window.location.href="<%=basePath%>mobile/edit-activity.jsp?id=0";
 															}else{
 																//注册失败
 																alert('保存失败,请稍后再试');

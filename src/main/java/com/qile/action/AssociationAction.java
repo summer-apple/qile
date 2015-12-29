@@ -1,6 +1,7 @@
 package com.qile.action;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -59,10 +60,8 @@ public class AssociationAction {
 	
 	
 	@RequestMapping("/logout")
-	public ModelAndView logout(HttpServletRequest request,ModelAndView mv){
+	public void logout(HttpServletRequest request){
 		request.getSession().removeAttribute("association");
-		mv.setViewName("index/login");
-		return mv;
 	}
 	
 	@RequestMapping("/update")
@@ -73,4 +72,10 @@ public class AssociationAction {
 	}
 	
 	
+	
+	@RequestMapping("/get-list")
+	@ResponseBody
+	public List<Association> getList(HttpServletRequest request){
+		return as.getList();
+	}
 }

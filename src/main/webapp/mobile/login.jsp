@@ -155,6 +155,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript">
 	$().ready(function(){
 
+		//删除session
+		$.ajax({
+			url:"../association/logout",
+			type:'post',
+			dataType:'json'
+		});
+
     //添加
 	$("#login-form").validate({
 							rules: {

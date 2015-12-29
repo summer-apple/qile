@@ -76,6 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     margin-top: 10px;
     margin-bottom: 5px;
 }
+.coupon-tip {
+    margin-top: 10px;
+}
 </style>
 
 </head>
@@ -94,10 +97,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			 <!--ajax add-->
 			 <div class="coupon-warp">
 				 <div class="col-md-12 coupon-title"><h5>其乐校园注册有礼千元物料包</h5></div>
-				 <div class="col-md-12 coupon-time">有效期：2016年上半学年各校开学及假日</div>
+				 <div class="col-md-12 coupon-time">有效期：2016.3.1-2016.6.31</div>
 				 <div class="col-md-12 coupon-price">优惠券价值：￥1000</div>
-				 <div class="col-md-12 coupon-content">1000元物料包内印刷类上限是200元，舞美类上限800元。免费物料使用时间段为2016年上半学年各校开学及放假日内。1000元免费物料包内价格均为市场价，用完后才可使用超低折扣价格的物料。</div>
+				 <div class="col-md-12 coupon-content">1000元物料包内印刷类上限是200元，舞美类上限800元。免费物料包内价格均为市场价，用完后才可使用超低折扣价格的物料。</div>
 			 </div>
+
+			 <div class="coupon-tip">
+				 提示：在30个工作日内其乐校园工作人员会完成信息验证并通知您具体物料价格及使用方式。
+			 </div>
+
      </div>
   </div>
 

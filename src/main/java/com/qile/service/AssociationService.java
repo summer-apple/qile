@@ -1,6 +1,7 @@
 package com.qile.service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,5 +65,13 @@ public class AssociationService {
 		}
 	}
 	
+	/**
+	 * 获取列表
+	 * @return
+	 */
+	public List<Association> getList(){
+		String hql = "FROM Association AS a WHERE a.username IS NOT NULL";
+		return dao.find(hql);
+	}
 
 }

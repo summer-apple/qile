@@ -49,7 +49,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   .login-link,.protocol-link{
     text-align: center;
   }
-  .reg-btn{
+  .save-more-btn{
     width: 100%;
   }
 	.logo-warp{
@@ -68,6 +68,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .clear{
 	clear: both;
 }
+h5{
+	text-align: center;
+}
+h6{
+  padding: 15px;
+  text-align: left;
+	color: #999;
+}
 </style>
 
 </head>
@@ -80,6 +88,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<image class="logo" src="../resources/images/qile-logo.png">
 	</div>
 <div class="clear"></div>
+<h5>添加社团日常活动</h5>
+<h6>提示:填写的日常活动数量需经过工作人员验证后才可领取1000元物料包，请社团负责人认真填写</h6>
 <div class="container">
    <div class="row">
      <div class="col-sm-12">
@@ -130,8 +140,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
        <div class="form-group btn-warp">
          <a href="javascript:history.back();" class="cancel-btn btn btn-default">取消</a>
 				 <button type="submit" class="save-btn btn btn-info">保存</button>
+				 <a href="<%=basePath%>mobile/edit-activity.jsp?id=0" class="btn btn-info">继续添加活动</a>
        </div>
-
 
       </form>
      </div>
