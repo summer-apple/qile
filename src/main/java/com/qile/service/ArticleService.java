@@ -62,6 +62,9 @@ public class ArticleService {
 		String hql = "FROM Article ORDER BY id DESC";
 
 		List<Article> list = dao.findByPage(hql, pageNo, pageSize);
+		for (Article article : list) {
+			article.setContent(null);
+		}
 
 		long amount = dao.findCount("SELECT COUNT(*) "+hql);
 		Map<String,Object> map = new HashMap<>();
