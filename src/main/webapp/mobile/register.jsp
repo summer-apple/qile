@@ -78,7 +78,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
      <div class="col-sm-12">
        <form id="register-form" method="post" role="form" action="">
          <input type="hidden" id="id" name="id" value="0">
-         <input type="hidden" id="flag" name="flag" value="0">
        <div class="form-group">
          <input type="text" class="form-control" id="username" name="username" placeholder="用户名">
        </div>
@@ -285,22 +284,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             });
 
 
-function checkSecurity(){
-  $.ajax({
-    url:"../util/check-security",
-    data: {'id':$('#id').val(),'type':$('input:radio[name="regtype"]:checked').val(),'code':$("#security").val()},
-    type:'post',
-    dataType:'json',
-    success:function(data){
-      if (data) {
-        alert('验证码正确');
-        $("#flag").val(1);
-      }else{
-        alert('验证码错误');
-      }
-    }
-  });
-}
+
 
 
 //开始倒计时

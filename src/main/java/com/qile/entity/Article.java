@@ -1,5 +1,5 @@
 package com.qile.entity;
-// Generated 2015-12-25 18:49:14 by Hibernate Tools 4.3.1.Final
+// Generated 2015-12-29 12:53:55 by Hibernate Tools 4.3.1.Final
 
 import java.util.Date;
 import javax.persistence.Column;

@@ -1,5 +1,5 @@
 package com.qile.entity;
-// Generated 2015-12-25 18:49:14 by Hibernate Tools 4.3.1.Final
+// Generated 2015-12-29 12:53:55 by Hibernate Tools 4.3.1.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,9 +18,10 @@ public class Company implements java.io.Serializable {
 	private Integer id;
 	private String username;
 	private String password;
-	private String company;
+	private String name;
 	private String contact;
 	private String position;
+	private String city;
 	private String phone;
 	private String wechat;
 	private String email;
@@ -30,13 +31,14 @@ public class Company implements java.io.Serializable {
 	public Company() {
 	}
 
-	public Company(String username, String password, String company, String contact, String position, String phone,
-			String wechat, String email, String description, String securityCode) {
+	public Company(String username, String password, String name, String contact, String position, String city,
+			String phone, String wechat, String email, String description, String securityCode) {
 		this.username = username;
 		this.password = password;
-		this.company = company;
+		this.name = name;
 		this.contact = contact;
 		this.position = position;
+		this.city = city;
 		this.phone = phone;
 		this.wechat = wechat;
 		this.email = email;
@@ -74,13 +76,13 @@ public class Company implements java.io.Serializable {
 		this.password = password;
 	}
 
-	@Column(name = "company", length = 45)
-	public String getCompany() {
-		return this.company;
+	@Column(name = "name", length = 45)
+	public String getName() {
+		return this.name;
 	}
 
-	public void setCompany(String company) {
-		this.company = company;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	@Column(name = "contact", length = 45)
@@ -99,6 +101,15 @@ public class Company implements java.io.Serializable {
 
 	public void setPosition(String position) {
 		this.position = position;
+	}
+
+	@Column(name = "city", length = 45)
+	public String getCity() {
+		return this.city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
 	}
 
 	@Column(name = "phone", length = 45)
